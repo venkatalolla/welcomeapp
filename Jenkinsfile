@@ -1,6 +1,6 @@
 #!groovy
 
-node()
+node('test')
 {
     stage('Checkout Source')
     {
