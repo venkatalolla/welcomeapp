@@ -9,3 +9,5 @@ docker run -d --name jenkins \
 	-v $HOME/apps:/apps \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	jenkinsci/blueocean
+
+# docker tag dotnet-app localhost:5000/dotnet-app-v0.1
