@@ -1,21 +1,33 @@
-FROM microsoft/aspnetcore-build:2.0 AS build
-WORKDIR /.net-core
+FROM microsoft/dotnet:2.0-sdk AS build
+WORKDIR /app
 
-
-COPY *.csproj ./
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY dotnetapp/*.csproj ./dotnetapp/
+COPY utils/*.csproj ./utils/
+COPY tests/*.csproj ./tests/
 RUN dotnet restore
 
+# copy and build everything else
+COPY dotnetapp/. ./dotnetapp/
+COPY utils/. ./utils/
+COPY tests/. ./tests/
 
-COPY . ./
-RUN dotnet publish -c Release -o output
+RUN dotnet build
 
+FROM build AS testrunner
+WORKDIR /app/tests
+ENTRYPOINT ["dotnet", "test","--logger:trx"]
 
-FROM microsoft/aspnetcore:2.0
-WORKDIR /.net-core
-COPY --from=build /app/output .
+FROM build AS test
+WORKDIR /app/tests
+RUN dotnet test
 
-EXPOSE 5000
-ENV ASPNETCORE_URLS http://*:5000
-ENV ASPNETCORE_ENVIRONMENT docker
+FROM test AS publish
+WORKDIR /app/dotnetapp
+RUN dotnet publish -o out
 
-ENTRYPOINT ["dotnet", "CoreApp.Web.dll"]
+FROM microsoft/dotnet:2.0-runtime AS runtime
+WORKDIR /app
+COPY --from=publish /app/dotnetapp/out ./
+ENTRYPOINT ["dotnet", "dotnetapp.dll"]
