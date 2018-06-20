@@ -2,18 +2,23 @@
 
 ### Leverage enterprise Jenkins to containerize .NET Core applications in a CI/CD pipeline.
 
-## Process
+## Summary
 
-We'll be taking a .NET application through a modern CI/CD pipeline.
+We'll be taking a .NET application through a modern Continuous Delivery pipeline using Jenkins and Docker. Along the way we'll highlight why Docker is a good choice for .NET applications, common continuous delivery techniques, and what other options are availabe for continuous delivery, containers, and orchestration. By the end of the webinar we expect you will dismiss any reservations you have about getting started refactoring your .NET applications into a more nimble microservices architecture.
+
+
+## Process
 
 1. Developer commits some changes.
 2. Hook invokes Jenkins job
 3. Jenkins clones repo
 4. Builds and runs tests on docker container
-5. If tests pass, tag docker container with registry, name, build number and ":latest"
+5. If tests pass, tag docker container with registry, name, branch, build number and ":latest"
 6. push tagged image to registry
 7. Registry triggers job to push new container to production
+8. Docker pulls new container and tags it name-prod
 8. Behold the glorious new ASCII art.
+9. Ongoing service starts 
 
 ## Contingencies
 
