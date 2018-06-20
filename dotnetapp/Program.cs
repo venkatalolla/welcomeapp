@@ -15,7 +15,7 @@ public static class Program
         }
 
         var reversedString = $"Reversed string: {ReverseUtil.ReverseString(message)}";
-        WriteLine("<html><body><div><pre>");
+        WriteLine("<html><body>" + "<div><pre>");
         WriteLine(GetBot(reversedString));
         WriteLine("Date: " + DateTime.Now);
         WriteLine("**Environment**");

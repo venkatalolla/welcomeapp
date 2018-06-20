@@ -4,7 +4,7 @@
 
 ## Summary
 
-We'll be taking a .NET application through a modern Continuous Delivery pipeline using Jenkins and Docker. Along the way we'll highlight why Docker is a good choice for .NET applications, common continuous delivery techniques, and what other options are availabe for continuous delivery, containers, and orchestration. By the end of the webinar we expect you will dismiss any reservations you have about getting started refactoring your .NET applications into a more nimble microservices architecture.
+We'll be taking a .NET application through a modern continuous delivery pipeline using Jenkins and Docker. Along the way we'll highlight why Docker is a good choice for .NET applications, common continuous delivery techniques, and what other options are available for continuous delivery, containers, and orchestration. By the end of the webinar we expect you will dismiss any reservations you have about getting started refactoring your .NET applications into a more nimble microservices architecture.
 
 
 ## Process
