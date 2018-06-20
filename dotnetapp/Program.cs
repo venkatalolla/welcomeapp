@@ -15,14 +15,14 @@ public static class Program
         }
 
         var reversedString = $"Reversed string: {ReverseUtil.ReverseString(message)}";
-        WriteLine("<html><body><div>");
+        WriteLine("<html><body><div><pre>");
         WriteLine(GetBot(reversedString));
         WriteLine("Date: " + DateTime.Now);
         WriteLine("**Environment**");
         WriteLine($"Platform: .NET Core 2.0");
         WriteLine($"OS: {RuntimeInformation.OSDescription}");
         WriteLine();
-        WriteLine("<div></body></html>");
+        WriteLine("</pre><div></body></html>");
   }
 
   public static string GetBot(string message) 
