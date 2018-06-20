@@ -1,34 +1,5 @@
-using System;
-using System.Runtime.InteropServices;
-using Utils;
-using static System.Console;
 
-public static class Program
-{
-  public static void Main(string[] args) 
-  {
-        string message = "Dotnet-bot: Welcome to using .NET Core!";
-
-        if (args.Length > 0) 
-        {
-          message = String.Join(" ",args);
-        }
-
-        var reversedString = $"Reversed string: {ReverseUtil.ReverseString(message)}";
-        WriteLine("<html><body><div>");
-        WriteLine(GetBot(reversedString));
-        WriteLine("Date: " + DateTime.Now);
-        WriteLine("**Environment**");
-        WriteLine($"Platform: .NET Core 2.0");
-        WriteLine($"OS: {RuntimeInformation.OSDescription}");
-        WriteLine();
-        WriteLine("<div></body></html>");
-  }
-
-  public static string GetBot(string message) 
-  {
-          string bot = $"\n        {message}";
-          bot += @"
+        Reversed string: !eroC TEN. gnisu ot emocleW :tob-tentoD
     __________________
                       \
                        \
@@ -67,7 +38,9 @@ public static class Program
        .........                        ..............
         .....
 
-";
-  return bot;
-  }
-}
+
+Date: 6/20/18 4:55:34 PM
+**Environment**
+Platform: .NET Core 2.0
+OS: Linux 4.14.47-63.37.amzn2.x86_64 #1 SMP Wed Jun 6 16:53:33 UTC 2018
+

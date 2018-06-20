@@ -1,0 +1,11 @@
+[Unit]
+Description=Executes a dotnet app that writes some ASCII art to a webpage
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/ec2-user/prod/dotnetapp/
+ExecStart=/home/ec2-user/prod/dotnetapp/service.sh
+Restart=on-failure
+RestartSec=5s
+
