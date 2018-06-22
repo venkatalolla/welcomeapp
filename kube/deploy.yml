@@ -1,2 +1,24 @@
-apiVersion: v1
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+    name: dotnetapp-${ENV}
+spec:
+    replicas: 3
+    minReadySeconds: 2
+    strategy: RollingUpdate
+    rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 1
+    template:
+        metadata:
+            labels:
+                app: dotnetapp
+                env: ${ENV}
+        spec:
+            containers:
+                - name: dotnetapp-${ENV}
+                  image: ${DOCKER_REGISTRY}:/dotnetapp-${ENV}:latest
+                  ports:
+                      - containerPort: 8080
+
 
