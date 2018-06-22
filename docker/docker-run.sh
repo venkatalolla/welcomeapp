@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # DOCKER_REGISTRY=`docker inspect registry --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'`
 DOCKER_REGISTRY=host.docker.internal
 # REPO_PATH="wherever"
