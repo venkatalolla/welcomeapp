@@ -3,7 +3,8 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY dotnetapp/*.csproj ./dotnetapp/ COPY utils/*.csproj ./utils/
+COPY dotnetapp/*.csproj ./dotnetapp/ 
+COPY utils/*.csproj ./utils/
 COPY tests/*.csproj ./tests/
 RUN dotnet restore
 
