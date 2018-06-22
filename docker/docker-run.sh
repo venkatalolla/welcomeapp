@@ -4,7 +4,7 @@
 # DOCKER_REGISTRY=`docker inspect registry --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'`
 DOCKER_REGISTRY=host.docker.internal
 # REPO_PATH="wherever"
-REPO_PATH=benhunter@host.docker.internal:/Users/benhunter/local-work/dot-net-webinar/welcomeapp
+REPO_PATH=host.docker.internal:/Users/benhunter/local-work/dot-net-webinar/repo/dotnetapp
 
 docker run -d --name jenkins \
 	-u root \
@@ -17,4 +17,4 @@ docker run -d --name jenkins \
     -e DOCKER_REGISTRY=$DOCKER_REGISTRY \
 	jenkinsci/blueocean
 
-# docker run -d -p 5000:5000 --restart=always --name registry registry:2
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
