@@ -41,3 +41,11 @@ https://www.cloudbees.com/products/features
 9. Automated config of CD for branches and pull requests
 10. Share standardized build environments across cluster of masters
 
+# Stevie and Surya
+
+If we're going to show this via a browser, incorporate k8s (deployment, service, etc.), we need to have some long running process. I figured it'd just be an nginx container that serves the web page written by a single execution of the sample .NET app. If I'm just using Docker, I can redirect the output of the app to a file on the host, then serve that file with another container. But I don't understand how that would work with Kubernetes. 
+
+I figure either of you could solve this.
+
+1. Surya - show me how to put two containers in a POD that share a volume. `dotnetapp` writes the page to a location shared with the nginx server, which keeps the POD alive. My problem is that k8s never gets in a good state because the container exits immediately.
+2. Stevie - alter the Dockerfile or application so that the resulting container does not exit immediately.

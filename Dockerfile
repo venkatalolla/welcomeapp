@@ -30,4 +30,4 @@ RUN dotnet publish -o out
 FROM microsoft/dotnet:2.0-runtime AS runtime
 WORKDIR /app
 COPY --from=publish /app/dotnetapp/out ./
-ENTRYPOINT ["while", "true;", "do", "dotnet", "dotnetapp.dll;", "sleep", "1;", "done"]
+ENTRYPOINT ["dotnet", "dotnetapp.dll"]
