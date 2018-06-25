@@ -1,10 +1,14 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-    name: dotnetapp-{{ENV}}
+    name: aspnet-react-{{ENV}}
 spec:
     replicas: 3
-    minReadySeconds: 1
+    minReadySeconds: 10
+    selector:
+        matchLabels:
+            app: aspnet-react
+            env: {{ ENV }}
     strategy: 
         type: RollingUpdate
         rollingUpdate:
@@ -13,13 +17,15 @@ spec:
     template:
         metadata:
             labels:
-                app: dotnetapp
+                app: aspnet-react
                 env: {{ENV}}
+                extra: tag
         spec:
             containers:
-                - name: dotnetapp-{{ENV}}
-                  image: {{DOCKER_REGISTRY}}:5000/dotnetapp:latest
+                - name: aspnet-react-{{ENV}}
+                  image: aspnet-react
+                  imagePullPolicy: IfNotPresent
                   ports:
-                      - containerPort: 8080
+                      - containerPort: 80
 
 

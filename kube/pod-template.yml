@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: aspnet-react
+    labels:
+        env: {{ENV}}
+        app: aspnet-react
+spec:
+    containers:
+        - name: aspnet-react
+          image: aspnet-react
+          imagePullPolicy: IfNotPresent
+          ports:
+              - containerPort: 80
+
