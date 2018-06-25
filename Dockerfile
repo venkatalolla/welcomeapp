@@ -1,35 +1,33 @@
-FROM microsoft/aspnetcore-build as build
+FROM microsoft/dotnet:2.0-sdk AS build
+WORKDIR /app
 
-WORKDIR /source/app
-
-COPY app/*.csproj .
-COPY utils/*.csproj /source/utils/
-COPY tests/*.csproj /source/tests/
-RUN dotnet restore 
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY dotnetapp/*.csproj ./dotnetapp/ 
+COPY utils/*.csproj ./utils/
+COPY tests/*.csproj ./tests/
+RUN dotnet restore
 
 # copy and build everything else
-COPY app/. .
-COPY utils/. /source/utils/
-COPY tests/. /source/tests/
+COPY dotnetapp/. ./dotnetapp/
+COPY utils/. ./utils/
+COPY tests/. ./tests/
 
 RUN dotnet build
 
-# do tests
 FROM build AS testrunner
-WORKDIR /source/tests
+WORKDIR /app/tests
 ENTRYPOINT ["dotnet", "test","--logger:trx"]
 
 FROM build AS test
-WORKDIR /source/tests
+WORKDIR /app/tests
 RUN dotnet test
 
 FROM test AS publish
-WORKDIR /source/app
+WORKDIR /app/dotnetapp
 RUN dotnet publish -o out
 
-FROM microsoft/aspnetcore
+FROM microsoft/dotnet:2.0-runtime AS runtime
 WORKDIR /app
-COPY --from=publish /source/app/out .
-ENTRYPOINT ["dotnet", "aspnet-react.dll"]
-
-
+COPY --from=publish /app/dotnetapp/out ./
+ENTRYPOINT ["dotnet", "dotnetapp.dll"]
