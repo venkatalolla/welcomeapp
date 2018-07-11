@@ -22,7 +22,7 @@ public static class Program
         WriteLine($"Platform: .NET Core 2.0");
         WriteLine($"OS: {RuntimeInformation.OSDescription}");
         WriteLine();
-        WriteLine("</pre>Changed!<div></body></html>");
+        WriteLine("</pre><div></body></html>");
   }
 
   public static string GetBot(string message) 
