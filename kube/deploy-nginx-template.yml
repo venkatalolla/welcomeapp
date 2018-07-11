@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: 172.30.1.97:5000/nginx:1.7.9
+        image: 402606527140.dkr.ecr.us-east-1.amazonaws.com/dotnet-webinar:nginx-1.7.9
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: regcred
