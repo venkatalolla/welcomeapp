@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: dotnet-job
+spec:
+    template:
+        spec:
+            containers:
+                - name: dotnet-app
+                  image: 402606527140.dkr.ecr.us-east-1.amazonaws.com/dotnet-webinar:latest
+                  imagePullPolicy: IfNotPresent
+            restartPolicy: Never
+            volumes: 
+                - name: shared-data
+                  emptyDir: {}
+    backoffLimit: 4
+

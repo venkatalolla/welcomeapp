@@ -49,3 +49,13 @@ I figure either of you could solve this.
 
 1. Surya - show me how to put two containers in a POD that share a volume. `dotnetapp` writes the page to a location shared with the nginx server, which keeps the POD alive. My problem is that k8s never gets in a good state because the container exits immediately.
 2. Stevie - alter the Dockerfile or application so that the resulting container does not exit immediately.
+
+
+## Setting up AWS Kubernetes
+
+1. Create cluster in console
+2. Create nodes with AWS Kubernetes QuickStart CloudFormation template.
+  - https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html?shortFooter=true
+3. Start kube UI
+  - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
+
