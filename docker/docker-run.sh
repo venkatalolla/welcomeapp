@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # DOCKER_REGISTRY=`docker inspect registry --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'`
-DOCKER_REGISTRY=host.docker.internal
+# DOCKER_REGISTRY=host.docker.internal
 # REPO_PATH="wherever"
-REPO_PATH=host.docker.internal:/Users/benhunter/local-work/dot-net-webinar/repo/dotnetapp
+# REPO_PATH=host.docker.internal:/Users/benhunter/local-work/dot-net-webinar/repo/dotnetapp
 
 docker run -d --name jenkins \
 	-u root \
