@@ -3,9 +3,8 @@
 export CLUSTER_ENDPOINT=`aws eks describe-cluster --name dotnet-webinar --query cluster.endpoint`
 export CLUSTER_CERT=`aws eks describe-cluster --name dotnet-webinar --query cluster.certificateAuthority.data`
 # replace lines in $KUBECONFIG
-eval `aws ecr get-login --no-include-email`
 echo `aws ecr get-login --no-include-email` > $PROJECT_DIR/ecr-login.sh
-
+eval `aws ecr get-login --no-include-email`
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml

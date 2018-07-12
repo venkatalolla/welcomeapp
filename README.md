@@ -59,3 +59,4 @@ I figure either of you could solve this.
 3. Start kube UI
   - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
 
+Did not think I'd have to put Jenkins on K8s
